@@ -99,43 +99,48 @@ void funcionalidad() {
     switch (CurrentScreen) {
       case Screens::Semaforo: {
         
-
+        
         switch (semaforoEstado) {
           case LuzSemaforo::Rojo: {
             // rjoo
             // prender pantalla rojo.
-           
+            
             if (millis() - contadorSemaforo >= tiempoRojo) {
               semaforoEstado = LuzSemaforo::Amarillo;
               contadorSemaforo = millis();
+              viewSemaforo(&tft, buttonsSemaforo);
               DEBUG_PRINTLN("amairlol");
               DEBUG_PRINT("contadorSemaforo: ");
               DEBUG_PRINTLN(contadorSemaforo);
-              DEBUG_PRINTLN(millis() - contadorSemaforo);
+              
             }
             break;
           }
           case LuzSemaforo::Amarillo: {
             // amarinllol
+            
             if (millis() - contadorSemaforo >= tiempoRojo) {
               semaforoEstado = LuzSemaforo::Verde;
               contadorSemaforo = millis();
+              viewSemaforo(&tft, buttonsSemaforo);
               DEBUG_PRINTLN("verdre");
               DEBUG_PRINT("contadorSemaforo: ");
               DEBUG_PRINTLN(contadorSemaforo);
-              DEBUG_PRINTLN(millis() - contadorSemaforo);
+              
             }
             break;
           }
           case LuzSemaforo::Verde: {
             // verdib
+            
             if (millis() - contadorSemaforo >= tiempoRojo) {
               semaforoEstado = LuzSemaforo::Rojo;
               contadorSemaforo = millis();
+              viewSemaforo(&tft, buttonsSemaforo);
               DEBUG_PRINTLN("rojfooo");
               DEBUG_PRINT("contadorSemaforo: ");
               DEBUG_PRINTLN(contadorSemaforo);
-              DEBUG_PRINTLN(millis() - contadorSemaforo);
+              
             }
             break;
           }

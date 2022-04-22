@@ -1,9 +1,9 @@
 #include "buttons/buttonsHome.h"
 #include "controllers.h"
-
-extern Screens CurrentScreen;
 extern uint32_t contadorSemaforo;
 extern LuzSemaforo semaforoEstado;
+extern Screens CurrentScreen;
+
 
 void controllerHome(Adafruit_TFTLCD *tft, Adafruit_GFX_Button *buttonsHome,
                     Adafruit_GFX_Button *buttonsSemaforo, const TSPoint p) {
