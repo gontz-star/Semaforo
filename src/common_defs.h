@@ -33,4 +33,13 @@ enum class Screens
   Semaforo
 };
 
+enum class LuzSemaforo {
+
+    Rojo,
+    Amarillo,
+    Verde
+    // colores del semaforo
+}
+;
+
 #endif
