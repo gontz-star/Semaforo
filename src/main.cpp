@@ -98,13 +98,11 @@ void funcionalidad() {
     // codigp
     switch (CurrentScreen) {
       case Screens::Semaforo: {
-        
-        
         switch (semaforoEstado) {
           case LuzSemaforo::Rojo: {
             // rjoo
             // prender pantalla rojo.
-            
+
             if (millis() - contadorSemaforo >= tiempoRojo) {
               semaforoEstado = LuzSemaforo::Amarillo;
               contadorSemaforo = millis();
@@ -112,13 +110,12 @@ void funcionalidad() {
               DEBUG_PRINTLN("amairlol");
               DEBUG_PRINT("contadorSemaforo: ");
               DEBUG_PRINTLN(contadorSemaforo);
-              
             }
             break;
           }
           case LuzSemaforo::Amarillo: {
             // amarinllol
-            
+
             if (millis() - contadorSemaforo >= tiempoRojo) {
               semaforoEstado = LuzSemaforo::Verde;
               contadorSemaforo = millis();
@@ -126,13 +123,12 @@ void funcionalidad() {
               DEBUG_PRINTLN("verdre");
               DEBUG_PRINT("contadorSemaforo: ");
               DEBUG_PRINTLN(contadorSemaforo);
-              
             }
             break;
           }
           case LuzSemaforo::Verde: {
             // verdib
-            
+
             if (millis() - contadorSemaforo >= tiempoRojo) {
               semaforoEstado = LuzSemaforo::Rojo;
               contadorSemaforo = millis();
@@ -140,7 +136,6 @@ void funcionalidad() {
               DEBUG_PRINTLN("rojfooo");
               DEBUG_PRINT("contadorSemaforo: ");
               DEBUG_PRINTLN(contadorSemaforo);
-              
             }
             break;
           }
@@ -162,12 +157,15 @@ void funcionalidad() {
 void tsMenu() {
   TSPoint p = ts.getPoint();
 
+  // si quiero dibujar la pantalla sin tocar la ts, después de llamar
+  // .getpoint() hay que arreglar la direccion de los pines, ya que los
+  // comparten
+  pinMode(XM, OUTPUT);
+  pinMode(YP, OUTPUT);
+
   if (p.z > MINPRESSURE) {
     // el modulo tactil tiene 60 puntos no dibujables en la pantalla
     TSPoint pointTmp = p;
-
-    pinMode(XM, OUTPUT);
-    pinMode(YP, OUTPUT);
 
     p.y = map(pointTmp.x, TS_MINX, TS_MAXX, tft.height(), 0);
     p.x = map(pointTmp.y, TS_MINY, TS_MAXY - 60, 0, tft.width());
